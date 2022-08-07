@@ -2,10 +2,13 @@ package hexlet.code;
 
 import java.util.Scanner;
 
-public class Cli {
-    public static String getPlayerInput() {
-        Scanner playerInput = new Scanner(System.in);
+import static java.lang.System.out;
 
-        return playerInput.next();
+public class Cli {
+    //FIXME fix return type
+    public static String getPlayerInput() {
+        Scanner playerName = new Scanner(System.in);
+
+        return playerName.next();
     }
 }
