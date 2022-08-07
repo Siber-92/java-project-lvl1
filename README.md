@@ -4,5 +4,6 @@
 ### Maintainability Badge
 [![Maintainability](https://api.codeclimate.com/v1/badges/cb78b49900c4acb46201/maintainability)](https://codeclimate.com/github/Siber-92/java-project-lvl1/maintainability)
 
-### asciinema:
-[demonstrates the game "Even"](https://asciinema.org/a/RWablTw8OHaBwsfxDLkugP9Ln)
+### asciinema demonstrates the game:
+- [Even](https://asciinema.org/a/RWablTw8OHaBwsfxDLkugP9Ln)
+- [Calculator](https://asciinema.org/a/PRD6ARejDvB140tpQ6R6wWKfu)

@@ -6,6 +6,7 @@ import static java.lang.System.out;
 
 public class Cli {
     private static String playerName;
+    private static String[] games = {"Exit", "Greet", "Even", "Calculator"};
 
     public static String getPlayerInput() {
         Scanner playerInput = new Scanner(System.in);
@@ -14,8 +15,6 @@ public class Cli {
     }
 
     public static void printGamesList() {
-        String[] games = {"Exit", "Greet", "Even"};
-
         out.println("Please enter the game number and press Enter");
         for (int i = 1; i < games.length; i++) {
             out.println(i + " - " + games[i]);
@@ -31,8 +30,8 @@ public class Cli {
         out.println("Hello, " + playerName + "!");
     }
 
-    public static void printGameResult(boolean win) {
-        if (win) {
+    public static void printGameResult(boolean gameResult) {
+        if (gameResult) {
             out.println("Congratulations, " + playerName + "!");
         } else {
             out.println("Let's try again, " + playerName + "!");
