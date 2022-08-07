@@ -22,7 +22,7 @@ public class Even {
         return playerAnswer.equals(rightAnswer);
     }
 
-    public static int getCountOfRightAnswers() {
+    public static boolean checkCountOfRightAnswers() {
         String answer;
         int number;
         int countOfRightAnswer = 0;
@@ -41,6 +41,12 @@ public class Even {
                 break;
             }
         }
-        return countOfRightAnswer;
+        return countOfRightAnswer == getRequiredNumberOfRightAnswers();
+    }
+
+    public static void startGame() {
+        Cli.printGreet();
+        printRulesOfGames();
+        Cli.printGameResult(checkCountOfRightAnswers());
     }
 }
