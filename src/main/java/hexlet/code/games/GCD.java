@@ -1,24 +1,16 @@
 package hexlet.code.games;
 
-import static java.lang.System.out;
-
-// Greatest Common Divisor
 public class GCD {
-    //    Step 1: Find the divisors of positive integer "a".
-//    Step 2: Find the divisors of positive integer "b".
-//    Step 3: Lis the divisors common to "a" and "b".
-//    Step 4: Find the divisor which is the highest of all the common divisors of both "a" and "b".
-//Find the greatest common divisor of given numbers.
     public static void printRulesOfGames() {
-        out.println("Find the greatest common divisor of given numbers.");
+        System.out.println("Find the greatest common divisor of given numbers.");
     }
 
     public static String getCorrectAnswer(int firstOperand, int secondOperand) {
         firstOperand = Math.abs(firstOperand);
         secondOperand = Math.abs(secondOperand);
 
-        int greatestOperand = firstOperand > secondOperand ? firstOperand : secondOperand;
-        int leastOperand = firstOperand < secondOperand ? firstOperand : secondOperand;
+        int greatestOperand = Math.max(firstOperand, secondOperand);
+        int leastOperand = Math.min(firstOperand, secondOperand);
 
         if (greatestOperand % leastOperand == 0) {
             return String.valueOf(leastOperand);

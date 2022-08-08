@@ -1,25 +1,21 @@
 package hexlet.code.games;
 
-import static java.lang.System.out;
-
 public class Calculator {
-    private static String[] operators = {"+", "-", "*"};
+    private static final String[] operators = {"+", "-", "*"};
+    private static int indexOfOperator;
 
     public static void printRulesOfGames() {
-        out.println("What is the result of the expression?");
+        System.out.println("What is the result of the expression?");
     }
 
-    public static int getAmountOfOperators() {
-        return operators.length;
-    }
-
-    public static String getCorrectAnswer(int firstOperand, int secondOperand, int index) {
+    public static String getCorrectAnswer(int firstOperand, int secondOperand) {
+        indexOfOperator = (int) (Math.random() * operators.length);
         int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
 
-        return String.valueOf(expressions[index]);
+        return String.valueOf(expressions[indexOfOperator]);
     }
 
-    public static String generateGameQuest(int firstOperand, int secondOperand, int index) {
-        return firstOperand + " " + (operators[index]) + " " + secondOperand;
+    public static String generateGameQuest(int firstOperand, int secondOperand) {
+        return firstOperand + " " + (operators[indexOfOperator]) + " " + secondOperand;
     }
 }

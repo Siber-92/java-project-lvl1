@@ -1,10 +1,8 @@
 package hexlet.code.games;
 
-import static java.lang.System.out;
-
 public class Even {
     public static void printRulesOfGames() {
-        out.println("Answer 'yes' if number even otherwise 'no'");
+        System.out.println("Answer 'yes' if number even otherwise 'no'");
     }
 
     public static String getCorrectAnswer(int number) {
