@@ -7,3 +7,4 @@
 ### asciinema demonstrates the game:
 - [Even](https://asciinema.org/a/RWablTw8OHaBwsfxDLkugP9Ln)
 - [Calculator](https://asciinema.org/a/PRD6ARejDvB140tpQ6R6wWKfu)
+- [GCD](https://asciinema.org/a/M5uYuPfpEm0reLtChcsTj7Sof)
