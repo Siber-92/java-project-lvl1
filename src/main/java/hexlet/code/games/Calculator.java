@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 public class Calculator {
-    private static final String[] operators = {"+", "-", "*"};
+    private static final String[] OPERATORS = {"+", "-", "*"};
     private static int indexOfOperator;
 
     public static void printRulesOfGames() {
@@ -9,13 +9,13 @@ public class Calculator {
     }
 
     public static String getCorrectAnswer(int firstOperand, int secondOperand) {
-        indexOfOperator = (int) (Math.random() * operators.length);
+        indexOfOperator = (int) (Math.random() * OPERATORS.length);
         int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
 
         return String.valueOf(expressions[indexOfOperator]);
     }
 
     public static String generateGameQuest(int firstOperand, int secondOperand) {
-        return firstOperand + " " + (operators[indexOfOperator]) + " " + secondOperand;
+        return firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand;
     }
 }
