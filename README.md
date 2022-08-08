@@ -5,8 +5,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/cb78b49900c4acb46201/maintainability)](https://codeclimate.com/github/Siber-92/java-project-lvl1/maintainability)
 
 ### asciinema demonstrates the game:
-- [Even](https://asciinema.org/a/RWablTw8OHaBwsfxDLkugP9Ln)
-- [Calculator](https://asciinema.org/a/PRD6ARejDvB140tpQ6R6wWKfu)
-- [GCD](https://asciinema.org/a/M5uYuPfpEm0reLtChcsTj7Sof)
-- [Progression](https://asciinema.org/a/ftdv6v1zvAIe5cpbB92qKjlr8)
-- [Prime](https://asciinema.org/a/1kHLqFBnDuL1BI1cH4ixly9C7)
+- [Even](https://asciinema.org/a/ernUixTjEEruskx8RMGv0FOHI)
+- [Calculator](https://asciinema.org/a/omm0kAD38RbuwZVBS1TLkpflw)
+- [GCD](https://asciinema.org/a/RFhBVtTbfh8OOIESrYeURRbER)
+- [Progression](https://asciinema.org/a/oYGkOuvV9z4D3EaeOgni2OB6u)
+- [Prime](https://asciinema.org/a/iY6YqUvRCYWDr9HjM9n5WvmAO)
