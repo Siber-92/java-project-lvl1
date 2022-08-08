@@ -17,7 +17,6 @@ public class GCD {
             }
             leastOperand--;
         }
-
         return String.valueOf(leastOperand);
     }
 

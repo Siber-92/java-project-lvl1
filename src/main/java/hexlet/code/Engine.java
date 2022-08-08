@@ -1,14 +1,11 @@
 package hexlet.code;
 
-import hexlet.code.games.Even;
-import hexlet.code.games.Calculator;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
 import static java.lang.System.out;
 
 public class Engine {
-    private static final String[] GAMES = {"Exit", "Greet", "Even", "Calculator", "GCD", "Progression"};
+    private static final String[] GAMES = {"Exit", "Greet", "Even", "Calculator", "GCD", "Progression", "Prime"};
     private static final int MAX_NUMBER_OF_ROUND = 3;
     private static int numberOfGame;
     private static String correctAnswer;
@@ -25,6 +22,7 @@ public class Engine {
     public static void choiceGame() {
         printGamesList();
         numberOfGame = Integer.parseInt(Cli.getPlayerInput());
+        out.println();
     }
 
     public static String getGameQuest() {
@@ -46,6 +44,9 @@ public class Engine {
             case 5:
                 correctAnswer = Progression.getCorrectAnswer(operand, secondOperand);
                 return Progression.generateGameQuest();
+            case 6:
+                correctAnswer = Prime.getCorrectAnswer(operand);
+                return Prime.generateGameQuest(operand);
             default:
                 return null;
         }
@@ -92,6 +93,7 @@ public class Engine {
             case 3 -> Calculator.printRulesOfGames();
             case 4 -> GCD.printRulesOfGames();
             case 5 -> Progression.printRulesOfGames();
+            case 6 -> Prime.printRulesOfGames();
             default -> {
             }
         }
