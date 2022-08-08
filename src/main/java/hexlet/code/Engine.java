@@ -11,7 +11,7 @@ import static java.lang.System.out;
 public class Engine {
     private static final String[] GAMES = {"Exit", "Greet", "Even", "Calculator", "GCD", "Progression", "Prime"};
     private static final int MAX_NUMBER_OF_ROUND = 3;
-    private static int numberOfGame;
+    private static String selectedGame;
     private static String correctAnswer;
 
     public static void printGamesList() {
@@ -25,30 +25,31 @@ public class Engine {
 
     public static void choiceGame() {
         printGamesList();
-        numberOfGame = Integer.parseInt(Cli.getPlayerInput());
+        selectedGame = Cli.getPlayerInput();
+
         out.println();
     }
 
     public static String getGameQuest() {
-        int lowerBound = 2;
-        int multiplier = 25; // lowerBound + multiplier == higherBound
+        final int lowerBound = 2;
+        final int multiplier = 25; // lowerBound + multiplier == higherBound
         int operand = lowerBound + (int) (Math.random() * multiplier);
         int secondOperand = lowerBound + (int) (Math.random() * multiplier);
 
-        switch (numberOfGame) {
-            case 2:
+        switch (selectedGame) {
+            case "2":
                 correctAnswer = Even.getCorrectAnswer(operand);
                 return Even.generateGameQuest(operand);
-            case 3:
+            case "3":
                 correctAnswer = Calculator.getCorrectAnswer(operand, secondOperand);
                 return Calculator.generateGameQuest(operand, secondOperand);
-            case 4:
+            case "4":
                 correctAnswer = GCD.getCorrectAnswer(operand, secondOperand);
                 return GCD.generateGameQuest(operand, secondOperand);
-            case 5:
+            case "5":
                 correctAnswer = Progression.getCorrectAnswer(operand, secondOperand);
                 return Progression.generateGameQuest();
-            case 6:
+            case "6":
                 correctAnswer = Prime.getCorrectAnswer(operand);
                 return Prime.generateGameQuest(operand);
             default:
@@ -88,22 +89,23 @@ public class Engine {
     }
 
     public static void startGame() {
-        if (numberOfGame > 0) {
+        if (Integer.parseInt(selectedGame) > 0) {
             Cli.printGreet();
         }
 
-        switch (numberOfGame) {
-            case 2 -> Even.printRulesOfGames();
-            case 3 -> Calculator.printRulesOfGames();
-            case 4 -> GCD.printRulesOfGames();
-            case 5 -> Progression.printRulesOfGames();
-            case 6 -> Prime.printRulesOfGames();
+        switch (selectedGame) {
+            case "2" -> Even.printRulesOfGames();
+            case "3" -> Calculator.printRulesOfGames();
+            case "4" -> GCD.printRulesOfGames();
+            case "5" -> Progression.printRulesOfGames();
+            case "6" -> Prime.printRulesOfGames();
             default -> {
             }
         }
 
-        if (numberOfGame > 1) {
+        if (Integer.parseInt(selectedGame) > 1) {
             printGameResult(checkAmountOfCorrectAnswer());
         }
     }
 }
+

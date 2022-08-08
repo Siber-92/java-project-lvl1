@@ -9,7 +9,7 @@ public class Progression {
     }
 
     public static void generateProgression(int firstProgressionValue, int stepOfProgression) {
-        int lowerBound = 5;
+        final int lowerBound = 5;
         int progressionSize = lowerBound + (int) (Math.random() * lowerBound);
         indexOfHiddenElement = (int) (Math.random() * progressionSize);
 
