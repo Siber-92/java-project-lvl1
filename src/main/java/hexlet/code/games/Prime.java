@@ -1,23 +1,41 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 public class Prime {
-    public static void printRulesOfGames() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise 'no'");
+    private static int operand;
+
+    public static void generateGameQuest(int number) {
+        operand = number;
     }
 
-    public static String getCorrectAnswer(int number) {
-        String answer = "yes";
+    public static String getRulesOfGame() {
+        return "Answer 'yes' if given number is prime. Otherwise 'no'";
+    }
 
-        for (int i = number / 2; i > 1; i--) {
-            if (number % i == 0) {
-                answer = "no";
+    public static String getCorrectAnswer() {
+        String correctAnswer = "yes";
+
+        for (int i = operand / 2; i > 1; i--) {
+            if (operand % i == 0) {
+                correctAnswer = "no";
                 break;
             }
         }
-        return answer;
+        return correctAnswer;
     }
 
-    public static String generateGameQuest(int number) {
-        return String.valueOf(number);
+    public static String getGameQuest() {
+        return String.valueOf(operand);
+    }
+
+    public static void generateGameVariable() {
+        Engine.setVariable(getRulesOfGame(), getGameQuest(), getCorrectAnswer());
+    }
+
+    public static void startGame(int number) {
+        Engine.generateGamesVariable();
+        generateGameQuest(number);
+        generateGameVariable();
     }
 }

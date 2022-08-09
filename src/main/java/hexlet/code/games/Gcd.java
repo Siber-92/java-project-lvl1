@@ -2,30 +2,33 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-public class Calculator {
-    private static final String[] OPERATORS = {"+", "-", "*"};
-    private static int indexOfOperator;
+public class Gcd {
     private static int firstOperand;
     private static int secondOperand;
 
     public static void generateGameQuest(int firstNumber, int secondNumber) {
         firstOperand = firstNumber;
         secondOperand = secondNumber;
-        indexOfOperator = (int) (Math.random() * OPERATORS.length);
     }
 
     public static String getRulesOfGame() {
-        return "What is the result of the expression?";
+        return "Find the greatest common divisor of given numbers.";
     }
 
     public static String getCorrectAnswer() {
-        int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
+        int leastOperand = Math.min(firstOperand, secondOperand);
 
-        return String.valueOf(expressions[indexOfOperator]);
+        while (leastOperand > 0) {
+            if (firstOperand % leastOperand == 0 && secondOperand % leastOperand == 0) {
+                break;
+            }
+            leastOperand--;
+        }
+        return String.valueOf(leastOperand);
     }
 
     public static String getGameQuest() {
-        return firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand;
+        return firstOperand + " " + secondOperand;
     }
 
     public static void generateGameVariable() {
