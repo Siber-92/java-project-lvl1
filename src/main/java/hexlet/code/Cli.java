@@ -7,16 +7,10 @@ import static java.lang.System.out;
 public class Cli {
     private static String playerName;
 
-    public static String getPlayerInput() {
-        Scanner playerInput = new Scanner(System.in);
-
-        return playerInput.next();
-    }
-
     public static void printGreet() {
         out.println("Welcome to the Brain Games!");
         out.print("May I have your name? ");
-        playerName = getPlayerInput();
+        playerName = String.valueOf(new Scanner(System.in).next());
         out.println("Hello, " + playerName + "!");
     }
 

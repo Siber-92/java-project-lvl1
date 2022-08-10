@@ -1,40 +1,40 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utilities;
 
 public class Calculator {
     private static final String[] OPERATORS = {"+", "-", "*"};
-    private static int indexOfOperator;
-    private static int firstOperand;
-    private static int secondOperand;
+    private static String gameQuest;
+    private static String correctAnswer;
 
-    public static void generateGameQuest(int firstNumber, int secondNumber) {
-        firstOperand = firstNumber;
-        secondOperand = secondNumber;
-        indexOfOperator = (int) (Math.random() * OPERATORS.length);
+    public static void printRulesOfGame() {
+        System.out.println("What is the result of the expression?");
     }
 
-    public static String getRulesOfGame() {
-        return "What is the result of the expression?";
-    }
-
-    public static String getCorrectAnswer() {
+    public static void generateGameData() {
+        int firstOperand = Utilities.getRandomNumber();
+        int secondOperand = Utilities.getRandomNumber();
         int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
+        int indexOfOperator = (int) (Math.random() * OPERATORS.length);
 
-        return String.valueOf(expressions[indexOfOperator]);
+        correctAnswer = String.valueOf(expressions[indexOfOperator]);
+        gameQuest = firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand;
     }
 
-    public static String getGameQuest() {
-        return firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand;
-    }
+    public static void startGame() {
+        Cli.printGreet();
+        printRulesOfGame();
 
-    public static void generateGameVariable() {
-        Engine.setVariable(getRulesOfGame(), getGameQuest(), getCorrectAnswer());
-    }
+        boolean quizResult;
+        int countOfRightAnswer = 0;
+        do {
+            generateGameData();
+            quizResult = Engine.checkQuizResult(gameQuest, correctAnswer);
+            countOfRightAnswer++;
+        } while (quizResult && countOfRightAnswer != Utilities.MAX_NUMBER_OF_ROUND);
 
-    public static void startGame(int firstNumber, int secondNumber) {
-        Engine.generateGamesVariable();
-        generateGameQuest(firstNumber, secondNumber);
-        generateGameVariable();
+        Engine.printGameResult(quizResult);
     }
 }
