@@ -13,6 +13,7 @@ import static java.lang.System.out;
 
 public class Menu {
     private static final HashMap<String, String> GAMES = new HashMap<>();
+    private static String selectedGame;
 
     private static void generateGamesList() {
         GAMES.put("1", "Greet");
@@ -33,7 +34,7 @@ public class Menu {
 
     public static void selectGame() {
         printGamesList();
-        String selectedGame = String.valueOf(new Scanner(System.in).next());
+        selectedGame = new Scanner(System.in).next();
         out.println();
 
         switch (selectedGame) {
@@ -46,6 +47,10 @@ public class Menu {
             default -> {
             }
         }
+    }
+
+    public static String getSelectedGame() {
+        return selectedGame;
     }
 }
 
