@@ -9,12 +9,14 @@ public class Progression {
     private static final String RULES = "What number is missing in the progression?";
 
     public static HashMap<String, String> getGameData() {
+        HashMap<String, String> gameData = new HashMap<>();
+
         int firstProgressionValue = Utilities.getRandomNumber();
         int stepOfProgression = Utilities.getRandomNumber();
         int progressionSize = Utilities.getRandomNumber();
-        int[] numbers = new int[progressionSize];
         int indexOfHiddenElement = (int) (Math.random() * progressionSize);
-        HashMap<String, String> gameData = new HashMap<>();
+
+        int[] numbers = new int[progressionSize];
 
         numbers[0] = firstProgressionValue;
         for (int i = 1; i < numbers.length; i++) {

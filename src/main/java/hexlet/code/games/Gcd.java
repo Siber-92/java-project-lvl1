@@ -9,10 +9,11 @@ public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
     public static HashMap<String, String> getGameData() {
+        HashMap<String, String> gameData = new HashMap<>();
+
         int firstOperand = Utilities.getRandomNumber();
         int secondOperand = Utilities.getRandomNumber();
         int leastOperand = Math.min(firstOperand, secondOperand);
-        HashMap<String, String> gameData = new HashMap<>();
 
         while (leastOperand > 0) {
             if (firstOperand % leastOperand == 0 && secondOperand % leastOperand == 0) {

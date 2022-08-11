@@ -10,11 +10,13 @@ public class Calculator {
     private static final String[] OPERATORS = {"+", "-", "*"};
 
     public static HashMap<String, String> getGameData() {
+        HashMap<String, String> gameData = new HashMap<>();
+
         int firstOperand = Utilities.getRandomNumber();
         int secondOperand = Utilities.getRandomNumber();
-        int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
         int indexOfOperator = (int) (Math.random() * OPERATORS.length);
-        HashMap<String, String> gameData = new HashMap<>();
+
+        int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
 
         gameData.put("question", firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand);
         gameData.put("correctAnswer", String.valueOf(expressions[indexOfOperator]));

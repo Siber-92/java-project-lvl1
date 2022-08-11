@@ -9,8 +9,8 @@ public class Prime {
     private static final String RULES = "Answer 'yes' if given number is prime. Otherwise 'no'";
 
     public static HashMap<String, String> getGameData() {
-        int operand = Utilities.getRandomNumber();
         HashMap<String, String> gameData = new HashMap<>();
+        int operand = Utilities.getRandomNumber();
 
         String correctAnswer = "yes";
         for (int i = operand / 2; i > 1; i--) {
