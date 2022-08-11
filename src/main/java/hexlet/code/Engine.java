@@ -24,7 +24,7 @@ public class Engine {
         out.println(rulesOfGame);
     }
 
-    public static boolean checkQuizResult(String question, String correctAnswer) {
+    private static boolean checkQuizResult(String question, String correctAnswer) {
         out.println("Question: " + question);
         out.print("Your answer: ");
         String answer = new Scanner(System.in).next();
@@ -40,9 +40,8 @@ public class Engine {
     public static void gameLoop() {
         HashMap<String, String> gameData = new HashMap<>();
         String selectedGame = Menu.getSelectedGame();
-        String question;
-        String correctAnswer;
         boolean quizResult;
+
         do {
             switch (selectedGame) {
                 case "2" -> gameData.putAll(Even.getGameData());
@@ -53,9 +52,7 @@ public class Engine {
                 default -> {
                 }
             }
-            question = gameData.get("question");
-            correctAnswer = gameData.get("correctAnswer");
-            quizResult = Engine.checkQuizResult(question, correctAnswer);
+            quizResult = Engine.checkQuizResult(gameData.get("question"), gameData.get("correctAnswer"));
             countOfRightAnswer++;
         } while (quizResult && countOfRightAnswer != MAX_NUMBER_OF_ROUND);
 
