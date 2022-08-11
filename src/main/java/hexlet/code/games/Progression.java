@@ -1,18 +1,14 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
 public class Progression {
+    private static final String RULES = "What number is missing in the progression?";
     private static String gameQuest;
     private static String correctAnswer;
 
-    public static void printRulesOfGame() {
-        System.out.println("What number is missing in the progression?");
-    }
-
-    public static void generateGameData() {
+    private static void generateGameData() {
         int firstProgressionValue = Utilities.getRandomNumber();
         int stepOfProgression = Utilities.getRandomNumber();
         int progressionSize = Utilities.getRandomNumber();
@@ -36,8 +32,7 @@ public class Progression {
     }
 
     public static void startGame() {
-        Cli.printGreet();
-        printRulesOfGame();
+        Engine.printGreet(RULES);
 
         boolean quizResult;
         int countOfRightAnswer = 0;

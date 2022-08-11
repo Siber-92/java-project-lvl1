@@ -1,18 +1,14 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
 public class Gcd {
+    private static final String RULES = "Find the greatest common divisor of given numbers.";
     private static String gameQuest;
     private static String correctAnswer;
 
-    public static void printRulesOfGame() {
-        System.out.println("Find the greatest common divisor of given numbers.");
-    }
-
-    public static void generateGameData() {
+    private static void generateGameData() {
         int firstOperand = Utilities.getRandomNumber();
         int secondOperand = Utilities.getRandomNumber();
         int leastOperand = Math.min(firstOperand, secondOperand);
@@ -28,8 +24,7 @@ public class Gcd {
     }
 
     public static void startGame() {
-        Cli.printGreet();
-        printRulesOfGame();
+        Engine.printGreet(RULES);
 
         boolean quizResult;
         int countOfRightAnswer = 0;

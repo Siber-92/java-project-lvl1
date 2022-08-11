@@ -14,7 +14,7 @@ import static java.lang.System.out;
 public class Menu {
     private static final HashMap<String, String> GAMES = new HashMap<>();
 
-    public static void generateGameList() {
+    private static void generateGamesList() {
         GAMES.put("1", "Greet");
         GAMES.put("2", "Even");
         GAMES.put("3", "Calculator");
@@ -23,8 +23,8 @@ public class Menu {
         GAMES.put("6", "Prime");
     }
 
-    public static void printGamesList() {
-        generateGameList();
+    private static void printGamesList() {
+        generateGamesList();
         out.println("Please enter the game number and press Enter");
         GAMES.forEach((numberOfGame, gameName) -> out.println(numberOfGame + " - " + gameName));
         out.println("0 - Exit");
@@ -37,7 +37,7 @@ public class Menu {
         out.println();
 
         switch (selectedGame) {
-            case "1" -> Cli.printGreet();
+            case "1" -> Engine.printGreet("");
             case "2" -> Even.startGame();
             case "3" -> Calculator.startGame();
             case "4" -> Gcd.startGame();

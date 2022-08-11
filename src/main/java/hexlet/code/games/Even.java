@@ -1,18 +1,14 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
 public class Even {
+    private static final String RULES = "Answer 'yes' if number even otherwise 'no'";
     private static String gameQuest;
     private static String correctAnswer;
 
-    public static void printRulesOfGame() {
-        System.out.println("Answer 'yes' if number even otherwise 'no'");
-    }
-
-    public static void generateGameData() {
+    private static void generateGameData() {
         int operand = Utilities.getRandomNumber();
 
         correctAnswer = operand % 2 == 0 ? "yes" : "no";
@@ -20,8 +16,7 @@ public class Even {
     }
 
     public static void startGame() {
-        Cli.printGreet();
-        printRulesOfGame();
+        Engine.printGreet(RULES);
 
         boolean quizResult;
         int countOfRightAnswer = 0;

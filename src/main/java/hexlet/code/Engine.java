@@ -5,10 +5,21 @@ import java.util.Scanner;
 import static java.lang.System.out;
 
 public class Engine {
+    private static final Scanner INPUT = new Scanner(System.in);
+    private static String playerName;
+
+    public static void printGreet(String rulesOfGame) {
+        out.println("Welcome to the Brain Games!");
+        out.print("May I have your name? ");
+        playerName = INPUT.next();
+        out.println("Hello, " + playerName + "!");
+        out.println(rulesOfGame);
+    }
+
     public static boolean checkQuizResult(String question, String correctAnswer) {
         out.println("Question: " + question);
         out.print("Your answer: ");
-        String answer = String.valueOf(new Scanner(System.in).next());
+        String answer = INPUT.next();
 
         if (answer.equals(correctAnswer)) {
             out.println("Correct!");
@@ -19,8 +30,6 @@ public class Engine {
     }
 
     public static void printGameResult(boolean gameResult) {
-        String playerName = Cli.getPlayerName();
-
         if (gameResult) {
             out.println("Congratulations, " + playerName + "!");
         } else {
