@@ -3,23 +3,27 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
+import static hexlet.code.Engine.NUMBER_OF_ROUND_DATA;
+import static hexlet.code.Engine.QUESTION_INDEX;
+import static hexlet.code.Engine.CORRECT_ANSWER_INDEX;
+import static hexlet.code.Engine.MAX_NUMBER_OF_ROUND;
+
 public class Calculator {
     private static final String RULES = "What is the result of the expression?";
     private static final String[] OPERATORS = {"+", "-", "*"};
 
     private static String[][] generateGameData() {
-        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][Engine.ROUND_DATA_INDEX];
+        String[][] questionAndAnswer = new String[MAX_NUMBER_OF_ROUND][NUMBER_OF_ROUND_DATA];
 
-        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
-            int firstNumber = Utilities.getRandomNumber();
-            int secondNumber = Utilities.getRandomNumber();
+        for (int i = 0; i < MAX_NUMBER_OF_ROUND; i++) {
+            int firstNum = Utilities.getRandomNumber();
+            int secondNum = Utilities.getRandomNumber();
             int indexOfOperator = (int) (Math.random() * OPERATORS.length);
 
-            int[] expressions = {firstNumber + secondNumber, firstNumber - secondNumber, firstNumber * secondNumber};
+            int[] expressions = {firstNum + secondNum, firstNum - secondNum, firstNum * secondNum};
 
-            questionAndAnswer[i][Engine.QUESTION_INDEX] =
-                    firstNumber + " " + (OPERATORS[indexOfOperator]) + " " + secondNumber;
-            questionAndAnswer[i][Engine.CORRECT_ANSWER_INDEX] = String.valueOf(expressions[indexOfOperator]);
+            questionAndAnswer[i][QUESTION_INDEX] = firstNum + " " + (OPERATORS[indexOfOperator]) + " " + secondNum;
+            questionAndAnswer[i][CORRECT_ANSWER_INDEX] = String.valueOf(expressions[indexOfOperator]);
         }
         return questionAndAnswer;
     }

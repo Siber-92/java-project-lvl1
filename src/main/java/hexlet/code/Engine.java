@@ -9,7 +9,7 @@ public class Engine {
     public static final int MAX_NUMBER_OF_ROUND = 3;
     public static final int QUESTION_INDEX = 0;
     public static final int CORRECT_ANSWER_INDEX = 1;
-    public static final int ROUND_DATA_INDEX = 2;
+    public static final int NUMBER_OF_ROUND_DATA = 2;
 
     private static final Scanner INPUT = new Scanner(System.in);
 

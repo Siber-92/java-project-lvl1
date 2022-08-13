@@ -3,26 +3,35 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
+import static hexlet.code.Engine.NUMBER_OF_ROUND_DATA;
+import static hexlet.code.Engine.QUESTION_INDEX;
+import static hexlet.code.Engine.CORRECT_ANSWER_INDEX;
+import static hexlet.code.Engine.MAX_NUMBER_OF_ROUND;
+
 public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
-    private static String[][] generateGameData() {
-        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][Engine.ROUND_DATA_INDEX];
+    private static String gcd(int firstNum, int secondNum) {
+        int leastOperand = Math.min(firstNum, secondNum);
 
-        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
-            int firstNumber = Utilities.getRandomNumber();
-            int secondNumber = Utilities.getRandomNumber();
-            int leastOperand = Math.min(firstNumber, secondNumber);
-
-            while (leastOperand > 0) {
-                if (firstNumber % leastOperand == 0 && secondNumber % leastOperand == 0) {
-                    break;
-                }
-                leastOperand--;
+        while (leastOperand > 0) {
+            if (firstNum % leastOperand == 0 && secondNum % leastOperand == 0) {
+                break;
             }
+            leastOperand--;
+        }
+        return String.valueOf(leastOperand);
+    }
 
-            questionAndAnswer[i][Engine.QUESTION_INDEX] = firstNumber + " " + secondNumber;
-            questionAndAnswer[i][Engine.CORRECT_ANSWER_INDEX] = String.valueOf(leastOperand);
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[MAX_NUMBER_OF_ROUND][NUMBER_OF_ROUND_DATA];
+
+        for (int i = 0; i < MAX_NUMBER_OF_ROUND; i++) {
+            int firstNum = Utilities.getRandomNumber();
+            int secondNum = Utilities.getRandomNumber();
+
+            questionAndAnswer[i][QUESTION_INDEX] = firstNum + " " + secondNum;
+            questionAndAnswer[i][CORRECT_ANSWER_INDEX] = gcd(firstNum, secondNum);
         }
         return questionAndAnswer;
     }
