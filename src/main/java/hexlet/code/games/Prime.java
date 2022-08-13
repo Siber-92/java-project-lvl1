@@ -3,31 +3,31 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
-import java.util.HashMap;
-
 public class Prime {
     private static final String RULES = "Answer 'yes' if given number is prime. Otherwise 'no'";
 
-    public static HashMap<String, String> getGameData() {
-        HashMap<String, String> gameData = new HashMap<>();
-        int operand = Utilities.getRandomNumber();
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
 
-        String correctAnswer = "yes";
-        for (int i = operand / 2; i > 1; i--) {
-            if (operand % i == 0) {
-                correctAnswer = "no";
-                break;
+        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
+            int number = Utilities.getRandomNumber();
+            int divider = number / 2;
+
+            String correctAnswer = "yes";
+            while (divider > 1) {
+                if (number % divider == 0) {
+                    correctAnswer = "no";
+                    break;
+                }
+                divider--;
             }
+            questionAndAnswer[i][0] = String.valueOf(number);
+            questionAndAnswer[i][1] = correctAnswer;
         }
-
-        gameData.put("question", String.valueOf(operand));
-        gameData.put("correctAnswer", correctAnswer);
-
-        return gameData;
+        return questionAndAnswer;
     }
 
     public static void startGame() {
-        Engine.printGreet(RULES);
-        Engine.gameLoop();
+        Engine.gameLoop(RULES, generateGameData());
     }
 }

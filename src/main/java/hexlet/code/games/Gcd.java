@@ -3,33 +3,31 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
-import java.util.HashMap;
-
 public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
-    public static HashMap<String, String> getGameData() {
-        HashMap<String, String> gameData = new HashMap<>();
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
 
-        int firstOperand = Utilities.getRandomNumber();
-        int secondOperand = Utilities.getRandomNumber();
-        int leastOperand = Math.min(firstOperand, secondOperand);
+        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
+            int firstNumber = Utilities.getRandomNumber();
+            int secondNumber = Utilities.getRandomNumber();
+            int leastOperand = Math.min(firstNumber, secondNumber);
 
-        while (leastOperand > 0) {
-            if (firstOperand % leastOperand == 0 && secondOperand % leastOperand == 0) {
-                break;
+            while (leastOperand > 0) {
+                if (firstNumber % leastOperand == 0 && secondNumber % leastOperand == 0) {
+                    break;
+                }
+                leastOperand--;
             }
-            leastOperand--;
+
+            questionAndAnswer[i][0] = firstNumber + " " + secondNumber;
+            questionAndAnswer[i][1] = String.valueOf(leastOperand);
         }
-
-        gameData.put("question", firstOperand + " " + secondOperand);
-        gameData.put("correctAnswer", String.valueOf(leastOperand));
-
-        return gameData;
+        return questionAndAnswer;
     }
 
     public static void startGame() {
-        Engine.printGreet(RULES);
-        Engine.gameLoop();
+        Engine.gameLoop(RULES, generateGameData());
     }
 }

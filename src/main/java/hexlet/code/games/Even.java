@@ -3,23 +3,22 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
-import java.util.HashMap;
-
 public class Even {
     private static final String RULES = "Answer 'yes' if number even otherwise 'no'";
 
-    public static HashMap<String, String> getGameData() {
-        HashMap<String, String> gameData = new HashMap<>();
-        int operand = Utilities.getRandomNumber();
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
 
-        gameData.put("question", String.valueOf(operand));
-        gameData.put("correctAnswer", operand % 2 == 0 ? "yes" : "no");
+        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
+            int number = Utilities.getRandomNumber();
 
-        return gameData;
+            questionAndAnswer[i][0] = String.valueOf(number);
+            questionAndAnswer[i][1] = number % 2 == 0 ? "yes" : "no";
+        }
+        return questionAndAnswer;
     }
 
     public static void startGame() {
-        Engine.printGreet(RULES);
-        Engine.gameLoop();
+        Engine.gameLoop(RULES, generateGameData());
     }
 }

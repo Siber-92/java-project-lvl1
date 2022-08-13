@@ -3,42 +3,39 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
-import java.util.HashMap;
-
 public class Progression {
     private static final String RULES = "What number is missing in the progression?";
+    private static final int HIGHER_BOUND = 15;
 
-    public static HashMap<String, String> getGameData() {
-        HashMap<String, String> gameData = new HashMap<>();
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
 
-        int firstProgressionValue = Utilities.getRandomNumber();
-        int stepOfProgression = Utilities.getRandomNumber();
-        int progressionSize = Utilities.getRandomNumber();
-        int indexOfHiddenElement = (int) (Math.random() * progressionSize);
+        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
+            int firstProgressionValue = Utilities.getRandomNumber();
+            int stepOfProgression = Utilities.getRandomNumber();
+            int progressionSize = Utilities.getRandomNumber(HIGHER_BOUND);
+            int indexOfHiddenElement = (int) (Math.random() * progressionSize);
 
-        int[] numbers = new int[progressionSize];
+            int[] numbers = new int[progressionSize];
+            StringBuilder question = new StringBuilder();
 
-        numbers[0] = firstProgressionValue;
-        for (int i = 1; i < numbers.length; i++) {
-            numbers[i] = numbers[i - 1] + stepOfProgression;
+            numbers[0] = firstProgressionValue;
+            for (int indexOfProgression = 1; indexOfProgression < numbers.length; indexOfProgression++) {
+                numbers[indexOfProgression] = numbers[indexOfProgression - 1] + stepOfProgression;
+
+                if (indexOfProgression == indexOfHiddenElement) {
+                    question.append("..").append(" ");
+                } else {
+                    question.append(numbers[indexOfProgression]).append(" ");
+                }
+            }
+            questionAndAnswer[i][0] = question.toString();
+            questionAndAnswer[i][1] = String.valueOf(numbers[indexOfHiddenElement]);
         }
-
-        String[] convertedArray = new String[numbers.length];
-        StringBuilder question = new StringBuilder();
-
-        for (int i = 0; i < numbers.length; i++) {
-            convertedArray[i] = i != indexOfHiddenElement ? String.valueOf(numbers[i]) : "..";
-            question.append(convertedArray[i]).append(" ");
-        }
-
-        gameData.put("question", question.toString());
-        gameData.put("correctAnswer", String.valueOf(numbers[indexOfHiddenElement]));
-
-        return gameData;
+        return questionAndAnswer;
     }
 
     public static void startGame() {
-        Engine.printGreet(RULES);
-        Engine.gameLoop();
+        Engine.gameLoop(RULES, generateGameData());
     }
 }

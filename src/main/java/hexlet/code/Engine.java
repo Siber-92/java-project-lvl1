@@ -1,66 +1,45 @@
 package hexlet.code;
 
-import hexlet.code.games.Calculator;
-import hexlet.code.games.Even;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Progression;
-import hexlet.code.games.Prime;
-
-import java.util.HashMap;
 import java.util.Scanner;
 
 import static java.lang.System.out;
 
 public class Engine {
     private static String playerName;
-    private static final int MAX_NUMBER_OF_ROUND = 3;
-    private static int countOfRightAnswer = 0;
+    public static final int MAX_NUMBER_OF_ROUND = 3;
 
-    public static void printGreet(String rulesOfGame) {
+    private static final Scanner INPUT = new Scanner(System.in);
+
+    public static void printGreet() {
         out.println("Welcome to the Brain Games!");
         out.print("May I have your name? ");
-        playerName = new Scanner(System.in).next();
+        playerName = INPUT.next();
         out.println("Hello, " + playerName + "!");
+    }
+
+    public static void gameLoop(String rulesOfGame, String[][] questionAndAnswer) {
+        printGreet();
         out.println(rulesOfGame);
-    }
 
-    private static boolean checkQuizResult(String question, String correctAnswer) {
-        out.println("Question: " + question);
-        out.print("Your answer: ");
-        String answer = new Scanner(System.in).next();
-
-        if (answer.equals(correctAnswer)) {
-            out.println("Correct!");
-            return true;
-        }
-        out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
-        return false;
-    }
-
-    public static void gameLoop() {
-        HashMap<String, String> gameData = new HashMap<>();
-        String selectedGame = Menu.getSelectedGame();
-        boolean quizResult;
-
+        int round = 0;
         do {
-            switch (selectedGame) {
-                case "2" -> gameData.putAll(Even.getGameData());
-                case "3" -> gameData.putAll(Calculator.getGameData());
-                case "4" -> gameData.putAll(Gcd.getGameData());
-                case "5" -> gameData.putAll(Progression.getGameData());
-                case "6" -> gameData.putAll(Prime.getGameData());
-                default -> {
-                }
+            String question = questionAndAnswer[round][0];
+            String correctAnswer = questionAndAnswer[round][1];
+
+            out.println("Question: " + question);
+            out.print("Your answer: ");
+            String answer = INPUT.next();
+
+            if (answer.equals(correctAnswer)) {
+                out.println("Correct!");
+                round++;
+            } else {
+                out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
+                break;
             }
-            quizResult = Engine.checkQuizResult(gameData.get("question"), gameData.get("correctAnswer"));
-            countOfRightAnswer++;
-        } while (quizResult && countOfRightAnswer != MAX_NUMBER_OF_ROUND);
+        } while (round != MAX_NUMBER_OF_ROUND);
 
-        printGameResult(quizResult);
-    }
-
-    private static void printGameResult(boolean gameResult) {
-        if (gameResult) {
+        if (round == MAX_NUMBER_OF_ROUND) {
             out.println("Congratulations, " + playerName + "!");
         } else {
             out.println("Let's try again, " + playerName + "!");

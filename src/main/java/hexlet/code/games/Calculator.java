@@ -3,29 +3,27 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utilities;
 
-import java.util.HashMap;
-
 public class Calculator {
     private static final String RULES = "What is the result of the expression?";
     private static final String[] OPERATORS = {"+", "-", "*"};
 
-    public static HashMap<String, String> getGameData() {
-        HashMap<String, String> gameData = new HashMap<>();
+    private static String[][] generateGameData() {
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
 
-        int firstOperand = Utilities.getRandomNumber();
-        int secondOperand = Utilities.getRandomNumber();
-        int indexOfOperator = (int) (Math.random() * OPERATORS.length);
+        for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
+            int firstNumber = Utilities.getRandomNumber();
+            int secondNumber = Utilities.getRandomNumber();
+            int indexOfOperator = (int) (Math.random() * OPERATORS.length);
 
-        int[] expressions = {firstOperand + secondOperand, firstOperand - secondOperand, firstOperand * secondOperand};
+            int[] expressions = {firstNumber + secondNumber, firstNumber - secondNumber, firstNumber * secondNumber};
 
-        gameData.put("question", firstOperand + " " + (OPERATORS[indexOfOperator]) + " " + secondOperand);
-        gameData.put("correctAnswer", String.valueOf(expressions[indexOfOperator]));
-
-        return gameData;
+            questionAndAnswer[i][0] = firstNumber + " " + (OPERATORS[indexOfOperator]) + " " + secondNumber;
+            questionAndAnswer[i][1] = String.valueOf(expressions[indexOfOperator]);
+        }
+        return questionAndAnswer;
     }
 
     public static void startGame() {
-        Engine.printGreet(RULES);
-        Engine.gameLoop();
+        Engine.gameLoop(RULES, generateGameData());
     }
 }
