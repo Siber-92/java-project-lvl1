@@ -8,7 +8,7 @@ public class Progression {
     private static final int HIGHER_BOUND = 15;
 
     private static String[][] generateGameData() {
-        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][Engine.ROUND_DATA_INDEX];
 
         for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
             int firstProgressionValue = Utilities.getRandomNumber();
@@ -19,9 +19,12 @@ public class Progression {
             int[] numbers = new int[progressionSize];
             StringBuilder question = new StringBuilder();
 
-            numbers[0] = firstProgressionValue;
-            for (int indexOfProgression = 1; indexOfProgression < numbers.length; indexOfProgression++) {
-                numbers[indexOfProgression] = numbers[indexOfProgression - 1] + stepOfProgression;
+            for (int indexOfProgression = 0; indexOfProgression < numbers.length; indexOfProgression++) {
+                if (indexOfProgression == 0) {
+                    numbers[indexOfProgression] = firstProgressionValue;
+                } else {
+                    numbers[indexOfProgression] = numbers[indexOfProgression - 1] + stepOfProgression;
+                }
 
                 if (indexOfProgression == indexOfHiddenElement) {
                     question.append("..").append(" ");
@@ -29,8 +32,8 @@ public class Progression {
                     question.append(numbers[indexOfProgression]).append(" ");
                 }
             }
-            questionAndAnswer[i][0] = question.toString();
-            questionAndAnswer[i][1] = String.valueOf(numbers[indexOfHiddenElement]);
+            questionAndAnswer[i][Engine.QUESTION_INDEX] = question.toString();
+            questionAndAnswer[i][Engine.CORRECT_ANSWER_INDEX] = String.valueOf(numbers[indexOfHiddenElement]);
         }
         return questionAndAnswer;
     }

@@ -8,7 +8,6 @@ public class Utilities {
         return LOWER_BOUND + (int) (Math.random() * HIGHER_BOUND);
     }
     public static int getRandomNumber(int higherBound) {
-        higherBound = higherBound - LOWER_BOUND;
-        return LOWER_BOUND + (int) (Math.random() * higherBound);
+        return LOWER_BOUND + (int) (Math.random() * (higherBound - LOWER_BOUND));
     }
 }

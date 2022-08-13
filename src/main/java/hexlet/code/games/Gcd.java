@@ -7,7 +7,7 @@ public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
     private static String[][] generateGameData() {
-        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][Engine.ROUND_DATA_INDEX];
 
         for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
             int firstNumber = Utilities.getRandomNumber();
@@ -21,8 +21,8 @@ public class Gcd {
                 leastOperand--;
             }
 
-            questionAndAnswer[i][0] = firstNumber + " " + secondNumber;
-            questionAndAnswer[i][1] = String.valueOf(leastOperand);
+            questionAndAnswer[i][Engine.QUESTION_INDEX] = firstNumber + " " + secondNumber;
+            questionAndAnswer[i][Engine.CORRECT_ANSWER_INDEX] = String.valueOf(leastOperand);
         }
         return questionAndAnswer;
     }

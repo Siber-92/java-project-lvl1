@@ -8,7 +8,7 @@ public class Calculator {
     private static final String[] OPERATORS = {"+", "-", "*"};
 
     private static String[][] generateGameData() {
-        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][2];
+        String[][] questionAndAnswer = new String[Engine.MAX_NUMBER_OF_ROUND][Engine.ROUND_DATA_INDEX];
 
         for (int i = 0; i < Engine.MAX_NUMBER_OF_ROUND; i++) {
             int firstNumber = Utilities.getRandomNumber();
@@ -17,8 +17,9 @@ public class Calculator {
 
             int[] expressions = {firstNumber + secondNumber, firstNumber - secondNumber, firstNumber * secondNumber};
 
-            questionAndAnswer[i][0] = firstNumber + " " + (OPERATORS[indexOfOperator]) + " " + secondNumber;
-            questionAndAnswer[i][1] = String.valueOf(expressions[indexOfOperator]);
+            questionAndAnswer[i][Engine.QUESTION_INDEX] =
+                    firstNumber + " " + (OPERATORS[indexOfOperator]) + " " + secondNumber;
+            questionAndAnswer[i][Engine.CORRECT_ANSWER_INDEX] = String.valueOf(expressions[indexOfOperator]);
         }
         return questionAndAnswer;
     }
