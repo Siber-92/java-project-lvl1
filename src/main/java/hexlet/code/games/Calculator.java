@@ -18,7 +18,7 @@ public class Calculator {
         for (int i = 0; i < MAX_NUMBER_OF_ROUND; i++) {
             int firstNum = Utilities.getRandomNumber();
             int secondNum = Utilities.getRandomNumber();
-            int indexOfOperator = (int) (Math.random() * OPERATORS.length);
+            int indexOfOperator = Utilities.getRandomNumber(OPERATORS.length);
 
             int[] expressions = {firstNum + secondNum, firstNum - secondNum, firstNum * secondNum};
 

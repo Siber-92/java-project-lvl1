@@ -12,7 +12,7 @@ public class Prime {
     private static final String RULES = "Answer 'yes' if given number is prime. Otherwise 'no'";
 
     private static boolean isPrime(int number) {
-        for (int i = number / 2; i > 1; i--) {
+        for (int i = 2; i < number / 2; i++) {
             if (number % i == 0) {
                 return false;
             }
