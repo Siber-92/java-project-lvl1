@@ -6,6 +6,7 @@ import static java.lang.System.out;
 
 public class Engine {
     private static String playerName;
+
     public static final int MAX_NUMBER_OF_ROUND = 3;
     public static final int QUESTION_INDEX = 0;
     public static final int CORRECT_ANSWER_INDEX = 1;
