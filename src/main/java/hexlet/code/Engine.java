@@ -12,7 +12,6 @@ public class Engine {
 
     public static void startGameLoop(String rulesOfGame, String[][] questionAndAnswer) {
         Cli.printGreet();
-        String playerName = Cli.getPlayerName();
         out.println(rulesOfGame);
 
         int round = 0;
@@ -33,10 +32,12 @@ public class Engine {
             }
         } while (round != MAX_NUMBER_OF_ROUND);
 
-        printGameResult(round, playerName);
+        printGameResult(round);
     }
 
-    private static void printGameResult(int round, String playerName) {
+    private static void printGameResult(int round) {
+        String playerName = Cli.getPlayerName();
+
         if (round == MAX_NUMBER_OF_ROUND) {
             out.println("Congratulations, " + playerName + "!");
         } else {
