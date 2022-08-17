@@ -11,7 +11,8 @@ public class Engine {
     public static final int NUMBER_OF_ROUND_DATA = 2;
 
     public static void startGameLoop(String rulesOfGame, String[][] questionAndAnswer) {
-        String playerName = Cli.printGreet();
+        Cli.printGreet();
+        String playerName = Cli.getPlayerName();
         out.println(rulesOfGame);
 
         int round = 0;
