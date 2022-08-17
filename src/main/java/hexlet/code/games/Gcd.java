@@ -12,7 +12,7 @@ public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
     private static String findGcd(int firstNum, int secondNum) {
-        int leastOperand = Math.min(firstNum, secondNum);
+        int leastOperand = Math.min(Math.abs(firstNum), Math.abs(secondNum));
 
         while (leastOperand > 0) {
             if (firstNum % leastOperand == 0 && secondNum % leastOperand == 0) {
