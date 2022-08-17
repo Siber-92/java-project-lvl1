@@ -7,12 +7,13 @@ import hexlet.code.games.Progression;
 import hexlet.code.games.Prime;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import static java.lang.System.out;
 
 public class Menu {
-    private static final LinkedHashMap<String, String> GAMES = new LinkedHashMap<>();
+    private static final Map<String, String> GAMES = new LinkedHashMap<>();
 
     private static void printGamesList() {
         GAMES.put("1", "Greet");
@@ -34,7 +35,7 @@ public class Menu {
         out.println();
 
         switch (selectedGame) {
-            case "1" -> Engine.printGreet();
+            case "1" -> Cli.printGreet();
             case "2" -> Even.startGame();
             case "3" -> Calculator.startGame();
             case "4" -> Gcd.startGame();

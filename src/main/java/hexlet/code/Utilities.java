@@ -3,7 +3,7 @@ package hexlet.code;
 import static java.lang.Math.random;
 
 public class Utilities {
-    private static final int LOWER_BOUND = 3;
+    private static final int LOWER_BOUND = -3;
     private static final int HIGHER_BOUND = 50;
 
     public static int getRandomNumber() {
