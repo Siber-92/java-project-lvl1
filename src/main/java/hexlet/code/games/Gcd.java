@@ -11,8 +11,11 @@ import static hexlet.code.Utilities.getRandomNumber;
 public class Gcd {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
+    private static final int LOWER_BOUND = 3;
+    private static final int HIGHER_BOUND = 25;
+
     private static String findGcd(int firstNum, int secondNum) {
-        int leastOperand = Math.min(Math.abs(firstNum), Math.abs(secondNum));
+        int leastOperand = Math.min(firstNum, secondNum);
 
         while (leastOperand > 0) {
             if (firstNum % leastOperand == 0 && secondNum % leastOperand == 0) {
@@ -27,8 +30,8 @@ public class Gcd {
         String[][] questionAndAnswer = new String[MAX_NUMBER_OF_ROUND][NUMBER_OF_ROUND_DATA];
 
         for (int i = 0; i < MAX_NUMBER_OF_ROUND; i++) {
-            int firstNum = getRandomNumber();
-            int secondNum = getRandomNumber();
+            int firstNum = getRandomNumber(LOWER_BOUND, HIGHER_BOUND);
+            int secondNum = getRandomNumber(LOWER_BOUND, HIGHER_BOUND);
 
             questionAndAnswer[i][QUESTION_INDEX] = firstNum + " " + secondNum;
             questionAndAnswer[i][CORRECT_ANSWER_INDEX] = findGcd(firstNum, secondNum);
