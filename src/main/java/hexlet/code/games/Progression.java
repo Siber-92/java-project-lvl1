@@ -16,7 +16,7 @@ public class Progression {
     private static int[] generateProgression(int firstElement, int stepOfProgression, int progressionSize) {
         int[] numbers = new int[progressionSize];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = i == 0 ? firstElement : numbers[i - 1] + stepOfProgression;
+            numbers[i] = firstElement + stepOfProgression * i;
         }
         return numbers;
     }

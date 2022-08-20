@@ -11,7 +11,9 @@ public class Engine {
     public static final int NUMBER_OF_ROUND_DATA = 2;
 
     public static void startGameLoop(String rulesOfGame, String[][] questionAndAnswer) {
-        Cli.printGreet();
+        out.println("Welcome to the Brain Games!");
+        out.print("May I have your name? ");
+        String playerName = new Scanner(System.in).next();
         out.println(rulesOfGame);
 
         int round = 0;
@@ -32,12 +34,10 @@ public class Engine {
             }
         } while (round != MAX_NUMBER_OF_ROUND);
 
-        printGameResult(round);
+        printGameResult(round, playerName);
     }
 
-    private static void printGameResult(int round) {
-        String playerName = Cli.getPlayerName();
-
+    private static void printGameResult(int round, String playerName) {
         if (round == MAX_NUMBER_OF_ROUND) {
             out.println("Congratulations, " + playerName + "!");
         } else {

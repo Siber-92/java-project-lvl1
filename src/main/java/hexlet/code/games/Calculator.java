@@ -17,7 +17,13 @@ public class Calculator {
             case "+" -> firstNum + secondNum;
             case "-" -> firstNum - secondNum;
             case "*" -> firstNum * secondNum;
-            default -> 0;
+            default -> {
+                try {
+                    throw new Exception("Error: Received operator not recognized");
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
         };
     }
 
